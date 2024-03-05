@@ -1,13 +1,13 @@
-# BaekJoon Note
+# BreadcrumbsBaekJoonNote
 
-## Java solutions for problems from Baekjoon Online Judge (BOJ)
 
-This repository contains my Java solutions for various problems from Baekjoon Online Judge (BOJ).
+## 자바로 푼 백준 온라인 저지 (BOJ) 문제 풀이 모음
 
-### Source Site
-[Baekjoon Online Judge](https://www.acmicpc.net/)
+다양한 백준 온라인 저지 (BOJ) 문제에 대한 자바 풀이를 담고 있습니다.
 
-### My Profile
-Check out my [Baekjoon profile](https://www.acmicpc.net/user/axc5126) to see my submissions and progress.
+### 출처 사이트
+[백준 온라인 저지](https://www.acmicpc.net/)
 
+### 내 프로필
+[백준 프로필](https://www.acmicpc.net/user/axc5126)
 
