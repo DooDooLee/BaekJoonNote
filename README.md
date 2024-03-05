@@ -8,6 +8,6 @@
 ### [📝](https://www.acmicpc.net/)
 
 
-### [프로필](https://www.acmicpc.net/user/axc5126)
+### [🗿](https://www.acmicpc.net/user/axc5126)
 
 
