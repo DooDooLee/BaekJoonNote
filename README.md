@@ -1,4 +1,4 @@
-# BreadcrumbsBaekJoonNote
+# BaekJoonNote
 
 
 ## 자바로 푼 백준 온라인 저지 (BOJ) 문제 풀이 모음
