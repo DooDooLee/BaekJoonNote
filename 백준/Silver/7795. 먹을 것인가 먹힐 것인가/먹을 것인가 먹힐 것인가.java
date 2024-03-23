@@ -19,33 +19,22 @@ public class Main{
             for(int i = 0; i<m; i++){
                 b[i] = sc.nextInt();
             }
-
-            Arrays.sort(a,Collections.reverseOrder());
-            Arrays.sort(b,Collections.reverseOrder());
+            
+            Arrays.sort(a);
+            Arrays.sort(b);
             int pointerA = 0;
             int pointerB = 0;
             int result = 0;
-
-            while(pointerA < n){
-                if(pointerB == m) break;
-                while(pointerB < m && a[pointerA]<=b[pointerB]){
+            while(pointerA <  n){
+                while(pointerB<m && a[pointerA]>b[pointerB]){
                     pointerB++;
                 }
-                result += m - pointerB;
+                result += pointerB;
                 pointerA++;
             }
-
-
-
-
             System.out.println(result);
 
-
-
         }
-
-
-
 
     }
 }
