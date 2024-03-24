@@ -1,41 +1,60 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.*;
-import java.util.stream.*;
 
-public class Main{
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
+class Main {
 
-        for(int x = 0; x<t; x++){
-            int n = sc.nextInt();
-            int m = sc.nextInt();
+    public static void main(String[] args) throws Exception {
+       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+       BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-            Integer[] a = new Integer[n];
-            Integer[] b = new Integer[m];
+        int T = Integer.parseInt(br.readLine());
+        for (int i = 0; i < T; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int N = Integer.parseInt(st.nextToken());
+            int M = Integer.parseInt(st.nextToken());
 
-            for(int i = 0; i<n; i++){
-                a[i] = sc.nextInt();
+            int[] A = new int[N];
+            int[] B = new int[M];
+
+            st = new StringTokenizer(br.readLine());
+            for (int j = 0; j < N; j++) {
+                A[j] = Integer.parseInt(st.nextToken());
             }
-            for(int i = 0; i<m; i++){
-                b[i] = sc.nextInt();
+
+            st = new StringTokenizer(br.readLine());
+            for (int j = 0; j < M; j++) {
+                B[j] = Integer.parseInt(st.nextToken());
             }
-            
-            Arrays.sort(a);
-            Arrays.sort(b);
-            int pointerA = 0;
-            int pointerB = 0;
+
+            Arrays.sort(B);
             int result = 0;
-            while(pointerA <  n){
-                while(pointerB<m && a[pointerA]>b[pointerB]){
-                    pointerB++;
-                }
-                result += pointerB;
-                pointerA++;
-            }
-            System.out.println(result);
 
+            for (int j = 0; j < N; j++) {
+                int first = 0;
+                int end = M - 1;
+                int index = 0;
+
+                while (first <= end) {
+                    int mid = (first + end) / 2;
+                    if (B[mid] < A[j]) {
+                        first = mid + 1;
+                        index = mid + 1;
+                    }
+                    else {
+                        end = mid - 1;
+                    }
+                }
+                result += index;
+            }
+
+            bw.write(Integer.toString(result) + "\n");
         }
 
+       bw.flush();
+       bw.close();
+       br.close();
     }
 }
-
