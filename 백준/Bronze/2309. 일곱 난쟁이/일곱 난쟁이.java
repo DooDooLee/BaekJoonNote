@@ -14,7 +14,7 @@ public class Main{
         }
 
         Arrays.sort(a);
-
+        outerLoop:
         for(int i=0; i<8; i++){
             for(int j =i+1; j<9; j++){
                 if(sum-a[i]-a[j] == 100){
@@ -23,8 +23,8 @@ public class Main{
                             sb.append(b).append("\n");
                         }
                     }
-                    i=8;
-                    break;
+
+                    break outerLoop;
                 }
             }
         }
