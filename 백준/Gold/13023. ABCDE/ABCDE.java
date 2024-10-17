@@ -57,7 +57,7 @@ public class Main{
                 dfs(i,adjacent,visited,cnt+1);
             }
             if(isLine){
-                return; //5개짜리 한줄 찾았으면 더 찾을 필요 없으니깐 튀어나오기
+                return;
             }
         }
         visited[index] = false;
