@@ -6,11 +6,24 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         String[] input = br.readLine().split(" ");
-        int M = Integer.parseInt(input[0]);
-        int N = Integer.parseInt(input[1]);
+        int M = Integer.parseInt(input[0]); 
+        int N = Integer.parseInt(input[1]);  
 
+        boolean[] isPrime = new boolean[N + 1]; 
+        for (int i = 2; i <= N; i++) isPrime[i] = true; 
+
+     
+        for (int i = 2; i * i <= N; i++) { 
+            if (isPrime[i]) { 
+                for (int j = i * i; j <= N; j += i) { 
+                    isPrime[j] = false;
+                }
+            }
+        }
+
+      
         for (int i = M; i <= N; i++) {
-            if (isPrime(i)) {
+            if (isPrime[i]) {
                 bw.write(i + "\n");
             }
         }
@@ -18,14 +31,5 @@ public class Main {
         bw.flush();
         bw.close();
         br.close();
-    }
-
-    // 소수 판별 함수 (O(√N))
-    public static boolean isPrime(int num) {
-        if (num < 2) return false;
-        for (int i = 2; i * i <= num; i++) {  // √num 까지만 탐색
-            if (num % i == 0) return false;
-        }
-        return true;
     }
 }
