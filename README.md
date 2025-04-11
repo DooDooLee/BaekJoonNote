@@ -8,7 +8,7 @@
 ### [📝](https://www.acmicpc.net/)
 
 
-### [🗿]([https://solved.ac/profile/axc5126](https://solved.ac/profile/axc5126))
+### [🗿](https://solved.ac/profile/axc5126)
 
 
 
