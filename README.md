@@ -8,6 +8,6 @@
 ### [📝](https://www.acmicpc.net/)
 
 
-### [🗿](https://www.acmicpc.net/user/axc5126)
+### [🗿](https://solved.ac/profile/axc5126)
 
 
