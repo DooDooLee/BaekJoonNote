@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.util.*;
 
@@ -20,7 +19,7 @@ public class Main {
 				arr[i] = Integer.parseInt(st.nextToken());
 			}
 			for(int i=1; i<=n; i++) {
-				if (team[i] == 0&&visit[i]==0) {
+				if (team[i] == 0) {
 			        dfs(i);
 			    }
 			}
