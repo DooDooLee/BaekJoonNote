@@ -34,14 +34,14 @@ public class Main {
 		int left = 0;
 		int right = al.size();
 		
-		while(right>left) {
+		while(right>=left) {
 			int  mid = (left+right)/2;
 			if(a>al.get(mid)) {
 				left = mid+1;
 			}else if(al.get(mid) == a){
 				return mid;
 			}else {
-				right = mid;
+				right = mid-1;
 			}
 		}
 		
