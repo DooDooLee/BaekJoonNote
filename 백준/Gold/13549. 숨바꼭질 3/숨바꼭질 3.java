@@ -10,7 +10,7 @@ public class Main {
       StringTokenizer st = new StringTokenizer(br.readLine());
 
         int n = Integer.parseInt(st.nextToken());
-        int k = Integer.parseInt(st.nextToken());
+        int k =  Integer.parseInt(st.nextToken());
         int [] d = new int [200000];
         int [] dx =new int[] {-1,1};
         
@@ -22,6 +22,7 @@ public class Main {
         	int [] c = pq.poll();
         	int ci = c[0];
         	int cw = c[1];
+        	 if (cw > d[ci]) continue;
         	if(ci==k) {
         		if(d[k]>cw) {
         			d[k] =cw;
