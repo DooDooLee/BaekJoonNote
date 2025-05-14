@@ -35,13 +35,12 @@ public class Main {
 		
 	}
 	
-	static int find(int x) {
-		if(set[x]==x) {
-			return x;
-		}else {
-			return find(set[x]);
-		}
-	}
+	 static int find(int x) {
+	        if (set[x] != x) {
+	            set[x] = find(set[x]);
+	        }
+	        return set[x];
+	    }
 	
 	static void union(int a,int b) {
 		int rootA = find(a);
