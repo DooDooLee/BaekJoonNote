@@ -24,23 +24,28 @@ public class Main {
 			al.get(a).add(e);
 			al.get(e).add(a);
 		}
-		dfs(1);
+		
+		Queue<Integer> q = new LinkedList<>();
+		
+		q.add(1);
+		
+		while(!q.isEmpty()){
+			
+			int x = q.poll();
+			visited[x] =1;
+			for(int a : al.get(x)) {
+				if(visited[a]==0) {
+					p[a] =x;
+					q.add(a);
+				}
+			}
+		}
 		for(int i=2; i<=n; i++) {
 			System.out.println(p[i]);
 		}
+		
+	}
 	
-		
-	}
-	static void dfs(int x) {
-		visited[x]=1;
-		
-		for(int a : al.get(x)) {
-			if(visited[a]==0) {
-				p[a] = x;
-				dfs(a);
-			}
-		}
-		
-	}
-}    
+}
+
     
