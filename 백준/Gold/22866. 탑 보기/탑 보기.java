@@ -1,69 +1,98 @@
-import java.util.*;
-import java.io.*;
-public class Main {
-	public static void main(String [] args) throws IOException {
-		
-	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int n = Integer.parseInt(br.readLine());
-		
-		int [] arr= new int[n+1];
-		int [][] dp1 =new int[n+1][2];
-		int [][] dp2 =new int [n+1][2];
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		for(int i = 1; i<=n; i++) {
-			
-			arr[i] = Integer.parseInt(st.nextToken());
-		}
-		
-		
-		for(int i=n-1; i>0; i--) {
-			int pi = i+1;
-				
-			while(pi<=n) {
-				if(arr[i]<arr[pi]) {
-					dp1[i][0] += dp1[pi][0]+1;
-					dp1[i][1] = pi;
-					break;
-				}
-				pi++;
-			}
-			
-			
-		}
-		
-		for(int i =2; i<=n; i++) {
-			int pi = i-1;
-			while(pi>0) {
-				if(arr[i]<arr[pi]) {
-					dp2[i][0] += dp2[pi][0]+1;
-					dp2[i][1] = pi;
-					break;
-				}
-				pi--;
-			}
-			
-		}
-		
-		for(int i =1; i<=n; i++) {
-			if(dp1[i][0]==0&&dp2[i][0]==0) {
-				System.out.println("0");
-			}else if(dp1[i][0]!=0 && dp2[i][0]==0 ) {
-				System.out.println(dp1[i][0]+" "+dp1[i][1]);
-			}else {
-				if(Math.abs(i-dp2[i][1])<=Math.abs(i-dp1[i][1])) {
-					System.out.println(dp2[i][0]+dp1[i][0]+" "+dp2[i][1]);
-				}else {
-					System.out.println(dp2[i][0]+dp1[i][0]+" "+dp1[i][1]);
-				}
-				
-			}
-		}
-		
-		
 
-		
-		
-		
-		
-	}
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+    public static void main(String[] args)throws IOException{
+    
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    	int n = Integer.parseInt(br.readLine());
+    	int [] arr = new int[n+1];
+    	StringTokenizer st = new StringTokenizer(br.readLine());
+    	int [][] result = new int[n+1][2];
+    	for(int i =1; i<=n; i++) {
+    		arr[i] = Integer.parseInt(st.nextToken());
+    		
+    	}
+    	
+    	Stack<Integer> stack = new Stack<>();
+    	
+    	
+    	for(int i =n; i>0; i--) {
+    		if(!stack.isEmpty()) {
+    			if(arr[i]<arr[stack.peek()]) {
+    				result[i][0] = stack.size();
+        			result[i][1] = stack.peek();
+        			stack.add(i);
+    			}else {
+    				stack.pop();
+    				
+    				while(!stack.isEmpty()) {
+    					if(arr[i]<arr[stack.peek()]) {
+    						result[i][0] = stack.size();
+    	        			result[i][1] = stack.peek();
+
+    	        			break;
+    					}
+    					stack.pop();
+    				}
+    				stack.add(i);
+    			}
+    		}else {
+    			stack.add(i);
+    		}
+    		
+    	}
+    	
+    	stack = new Stack<>();
+    	for(int i = 1; i<=n; i++) {
+    		if(!stack.isEmpty()) {
+    			if(arr[i]<arr[stack.peek()]) {
+    				result[i][0] += stack.size();
+    				if(Math.abs(i-stack.peek())<=Math.abs(i-result[i][1])) {
+    					result[i][1] = stack.peek();
+    				}
+    				stack.add(i);
+    			}
+    			else {
+    				stack.pop();
+    				while(!stack.isEmpty()) {
+    					if(arr[i]<arr[stack.peek()]) {
+    						result[i][0] += stack.size();
+    	    				if(Math.abs(i-stack.peek())<=Math.abs(i-result[i][1])) {
+    	    					result[i][1] = stack.peek();
+    	    				}
+    	    				
+    	    				break;
+    					}
+    					stack.pop();
+    				}
+    				stack.add(i);
+    			}
+    			
+    			
+    		}else {
+    			stack.add(i);
+    		}
+    	}
+    	
+    	
+    	for(int i =1; i<=n; i++) {
+    		if(result[i][0] ==0) {
+    			System.out.println("0");
+    		}else {
+    			System.out.println(result[i][0]+" "+result[i][1]);
+    		}
+    	
+    	}
+    	
+    	
+    	
+    }
+    
+    
+    
+    
+    
 }
