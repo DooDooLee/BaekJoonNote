@@ -27,7 +27,7 @@ public class Main {
     		how[i] = 5;
     	}
     	min = Integer.MAX_VALUE;
-    	back(0);
+    	back(0,0);
     	
     	if(min == Integer.MAX_VALUE) {
     		System.out.println("-1");
@@ -39,12 +39,11 @@ public class Main {
     }
     
     
-    static void back(int d ) {
+    static void back(int d,int count ) {
+    	
+		if (count >= min) return;
+
     	if (d==one.size()) {
-    		int count = 25;
-    		for(int i =0; i<5; i++) {
-    			count -= how[i]; 
-    		}
     		min = Math.min(min,count);
     		return;
     	}
@@ -52,14 +51,14 @@ public class Main {
     	int x = one.get(d)[0];
     	int y = one.get(d)[1];
     	
-    	if(arr[x][y]!=1) back(d+1);
+    	if(arr[x][y]!=1) back(d+1,count);
     	
     	for(int i =4; i>=0; i--) {
     		if(how[i]==0) continue; // 색종이가 없으면
     		if(!isP(x,y,i)) continue;
     		p(x,y,i,0);
     		how[i]--;
-    		back(d+1);
+    		back(d+1,count+1);
     		p(x,y,i,1);
     		how[i]++;
     		
