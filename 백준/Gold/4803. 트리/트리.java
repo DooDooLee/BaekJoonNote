@@ -14,7 +14,7 @@ public class Main {
 		StringTokenizer st0 = new StringTokenizer(br.readLine());
 		n = Integer.parseInt(st0.nextToken());
 		m = Integer.parseInt(st0.nextToken());
-		 while(n != 0 || m != 0)  {
+		while(n != 0 || m != 0) {
 			
 			p = new int[n+1];
 			for(int i =1; i<=n; i++) {
@@ -35,7 +35,7 @@ public class Main {
 				}else {	//두개가 서로 다른 연결관계일때
 					union(a,b);
 					if(cSet.contains(a)||cSet.contains(b)) {
-						cSet.add(find(a));
+						cSet.add(a);
 					}
 				}
 				
