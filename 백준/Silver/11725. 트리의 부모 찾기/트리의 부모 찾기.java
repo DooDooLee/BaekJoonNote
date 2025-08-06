@@ -1,51 +1,45 @@
-
 import java.io.*;
 import java.util.*;
 
 public class Main {
-	static int [] p;
-	static int [] visited;
-	static ArrayList<ArrayList<Integer>> al;
-	public static void main(String[] args)throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int n = Integer.parseInt(br.readLine());
-		al = new ArrayList<>();
-		visited = new int[n+1];
-		p = new int[n+1];
-		for(int i=0; i<=n; i++) {
-			al.add(new ArrayList<Integer>());
-			
-		}
-		for(int i =1; i<n; i++) {
-			StringTokenizer st = new StringTokenizer(br.readLine());
-			int a= Integer.parseInt(st.nextToken());
-			int e= Integer.parseInt(st.nextToken());
-			
-			al.get(a).add(e);
-			al.get(e).add(a);
-		}
-		
-		Queue<Integer> q = new LinkedList<>();
-		
-		q.add(1);
-		
-		while(!q.isEmpty()){
-			
-			int x = q.poll();
-			visited[x] =1;
-			for(int a : al.get(x)) {
-				if(visited[a]==0) {
-					p[a] =x;
-					q.add(a);
-				}
-			}
-		}
-		for(int i=2; i<=n; i++) {
-			System.out.println(p[i]);
-		}
-		
-	}
-	
-}
+    static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+    static int[] parent;
+    static boolean[] visited;
 
-    
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+
+        parent = new int[n + 1];
+        visited = new boolean[n + 1];
+
+        for (int i = 0; i <= n; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        for (int i = 0; i < n - 1; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+
+            graph.get(a).add(b);
+            graph.get(b).add(a);
+        }
+
+        dfs(1);
+
+        for (int i = 2; i <= n; i++) {
+            System.out.println(parent[i]);
+        }
+    }
+
+    static void dfs(int node) {
+        visited[node] = true;
+        for (int next : graph.get(node)) {
+            if (!visited[next]) {
+                parent[next] = node;
+                dfs(next);
+            }
+        }
+    }
+}
