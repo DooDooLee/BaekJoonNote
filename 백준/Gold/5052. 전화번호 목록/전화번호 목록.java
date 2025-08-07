@@ -1,37 +1,44 @@
+
 import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    static int n ;
+    static boolean isV;
+    public static void main(String[] args )throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int T = Integer.parseInt(br.readLine());
-
-        while (T-- > 0) {
-            int n = Integer.parseInt(br.readLine());
-            String[] numbers = new String[n];
-            HashSet<String> set = new HashSet<>();
-
-            for (int i = 0; i < n; i++) {
-                numbers[i] = br.readLine();
-                set.add(numbers[i]);
+        int t =  Integer.parseInt(br.readLine());
+       
+        for(int tc = 1; tc<=t; tc++) {
+            n = Integer.parseInt(br.readLine());
+            Set<String> set = new HashSet<>();
+            isV=true;
+            for(int i =0; i<n; i++) {
+                set.add( br.readLine());
             }
 
-            boolean isConsistent = true;
-
-            for (String number : numbers) {
-                StringBuilder prefix = new StringBuilder();
-                // 접두어 확인: 마지막 글자는 제외 (전체 문자열은 본인과 같으니까!)
-                for (int i = 0; i < number.length() - 1; i++) {
-                    prefix.append(number.charAt(i));
-                    if (set.contains(prefix.toString())) {
-                        isConsistent = false;
-                        break;
-                    }
-                }
-                if (!isConsistent) break;
+            for(String x : set) {
+            	if(!isV) break;
+            	StringBuilder sb =new StringBuilder();
+            	for(int i=0; i<x.length()-1; i++) {
+            		sb.append(x.charAt(i));
+            		if(set.contains(sb.toString())) {
+            			
+            			isV = false;
+            			break;
+            		}
+            		
+            	}
             }
-
-            System.out.println(isConsistent ? "YES" : "NO");
+            
+           
+           String result = isV? "YES":"NO"; 
+           
+           System.out.println(result);
+           
+          
         }
+
     }
+
 }
