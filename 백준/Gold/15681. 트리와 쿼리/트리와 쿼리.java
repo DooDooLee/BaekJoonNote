@@ -30,15 +30,16 @@ public class Main{
 			graph.get(b).add(a);
 		}
 		makeTree(r);
+		StringBuilder sb = new StringBuilder ();
 		
 		for(int i =0; i<q; i++) {
 			int x = Integer.parseInt(br.readLine());
 			if(dp[x]==0) {
 				findSeg(x);
 			}
-			System.out.println(dp[x]);
+			sb.append(dp[x]).append("\n");
 		}
-		
+		System.out.print(sb.toString());
 		
  	}
  	
