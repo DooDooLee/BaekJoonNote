@@ -30,10 +30,12 @@ public class Main{
 			graph.get(b).add(a);
 		}
 		makeTree(r);
-		findSeg(r);
+		
 		for(int i =0; i<q; i++) {
 			int x = Integer.parseInt(br.readLine());
-			
+			if(dp[x]==0) {
+				findSeg(x);
+			}
 			System.out.println(dp[x]);
 		}
 		
@@ -44,7 +46,12 @@ public class Main{
  		dp[x]++;
  		
  		for(int nx : tree.get(x)) {
- 			dp[x] += findSeg(nx);
+ 			if(dp[nx]==0) {
+ 				dp[x] += findSeg(nx);
+ 			}else {
+ 				dp[x] += dp[nx];
+ 			}
+ 			
  		}
  		return dp[x];
  	}
