@@ -6,7 +6,7 @@ public class Main {
     static int [][] map;
     static int [][] visit;
     static int [] visit2;
-    static ArrayList <ArrayList<Integer>> graph;
+ 
     static ArrayList <int []> edge;
     static int result;
     static int [] dx  = new int[] {1,-1,0,0};
@@ -47,10 +47,7 @@ public class Main {
             }
         } 
         
-        graph = new ArrayList<>();
-        for(int i = 0; i<=islandNum; i ++) {
-        	graph.add(new ArrayList<>());
-        }
+      
         
         edge = new ArrayList<>();
         p = new int[islandNum+1];
@@ -83,8 +80,6 @@ public class Main {
         	
         	if(find(from)!=find(to)) {
         		union(from, to);
-        		//graph.get(from).add(to);
-        		//graph.get(to).add(from);
         		result+=w;
         		eC++;
         	}
@@ -93,35 +88,12 @@ public class Main {
         
         
         isV = true;
-    	//dfs(1);
+ 
     	
     	if(eC ==islandNum-1) {
     		System.out.println(result);
     	}else {
     		System.out.println(-1);
-    	}
-    	
-    	
-    	
-    	
-    	
-        
-       
-        
-        
-        
-        
-       
-        
-
-    }
-    
-    static void dfs(int x) {
-    	visit2[x] =1;
-    	for(int nx : graph.get(x)) {
-    		if(visit2[nx]==0) {
-    			dfs(nx);
-    		}
     	}
     }
     
@@ -143,12 +115,7 @@ public class Main {
    }
     
     
-    
-    
-    
-    
-    
-    
+
     static void addEd(int x, int y, int start,int w) {
     	
     	int count = 0;
